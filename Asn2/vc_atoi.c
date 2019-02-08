@@ -9,7 +9,9 @@ int vc_atoi(char *str) {
     int i = 0;
     int number = 0;
     while (str[i] != '\0') {
-        number = number * 10 + str[i];
+        number = (number * 10) + (str[i] - '0');
+        i++;
     }
+
     return number;
 }

@@ -1,4 +1,8 @@
-#include <stdio.h>
+/**
+ * File              : vc_sort_int_table.c
+ * Author            : Ayana, Gui
+ * Date              : Wed 6 Feb 2019
+ */
 
 void swap(int *pa, int *pb)
 {
@@ -19,19 +23,4 @@ void vc_sort_int_table(int *tab, int size) {
         }
         swap(&tab[min], &tab[i]);
     }
-}
-
-int main() {
-
-    int arr[] = {12, 23, 67, 5};
-
-    vc_sort_int_table(arr, 4);
-
-    int i = 0;
-    for (i=0; i < 4; i++) {
-        printf("%d ", arr[i]);
-        printf("\n");
-    }
-
-    return 0;
 }

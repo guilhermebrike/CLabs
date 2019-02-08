@@ -1,7 +1,7 @@
 /**
- * File              : vc_str_is_alpha.c
+ * File              : vc_print_combo.c
  * Author            : Ayana, Gui
- * Date              : Fri 10 Aug 2018
+ * Date              : Tue 5 Feb 2019
  */
 
 #include <stdio.h>
@@ -14,8 +14,10 @@ void vc_print_comb(void) {
                 putchar(i);
                 putchar(j);
                 putchar(k);
-                putchar(',');
-                putchar(' ');
+                if (n1 != '7' || n2 != '8' || n3 != '9') {
+                    putchar(',');
+                    putchar(' ');
+                }
             }
         }
     }
