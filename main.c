@@ -1,29 +1,35 @@
 #include <stdio.h>
+#include <string.h>
 
-int vc_str_is_printable(char *str){
-    int i = 0;
-    
-    if (str[i] == '\0'){
-        return 1;
-    }
 
-    while (str[i] != '\0'){
-            if (str[i] >= 33 && str[i] <= 126){
-                i++;
-                continue;
-            }else{
-                return 0;
-            }
-           i++;        
-    }
-    return 1;
-}
+ void *vc_print_memory(void *addr, unsigned int size){
+        for(int i = 0; i < size; i++)
+        {  
+            putchar(addr);
+            addr++;
+        }
+ }
+
+
+
+
 
 int main() {
     // when creating a char array using the [] notation it will convert to a normal char * with \0 at the end
-    char str1[] = "helloyouarethebest";
-    char str2[] = "812398cxjia81238z09[';]-!@#$!^#";
 
-    printf("%d\n", vc_str_is_printable(str2));
+    char str2[] = "1234\0       ";
+    char str3[] = "hello";
+    // printf("%d\n", vc_strlen(str2));
+    // printf("%d\n", vc_strlen(str3));
+    // printf("%d\n", vc_strlen(vc_strcat(str2,str3)));
+
+    // printf("%s\n",strlcat(str2,str3,5));
+    printf("Addresses pointed by str2: %p",str2[0]);
+    putchar('\n');  
+    printf("Addresses pointed by str2: %p",str2[3]);    
+
+    //char str1[] = "Salut les aninches c'est cool show non on fait de tructerrible\x00\x2e\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0e\x0f\x1b\x7f";
+    //putchar('|');
+    //vc_print_memory(str2,3);
     return 0;
 }
