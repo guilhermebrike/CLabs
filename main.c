@@ -1,16 +1,12 @@
 #include <stdio.h>
 #include <string.h>
+#include <Asn6/myheader.h>
 
 
  void *vc_print_memory(void *addr, unsigned int size){
-        for(int i = 0; i < size; i++)
-        {  
-            putchar(addr);
-            addr++;
-        }
+
+
  }
-
-
 
 
 
