@@ -6,20 +6,26 @@
 
 #include <stdio.h>
 
-unsigned int *vc_strlcpy(char *dest, char *src, unsigned int size);
-    
-    int i = 0;
-    
-    while (dest[i] != '\0'){
-        i++;
-    }
-    int j = 0;
-    while (src[j] != '\0'){
-        dest[i] = src[j];
-        i++;
-        j++;
-    }
-    dest[i] = '\0';
+int vc_strlen(char *str) {
 
-    return dest;
+    int i = 0;
+    while (str[i] != '\0') {
+        i++;
+    }
+    return i;
+}
+
+unsigned int *vc_strlcpy(char *dest, char *src, unsigned int size){
+    int dest_size = vc_strlen(dest);
+    int src_size = vc_strlen(src);
+
+    int i = 0;
+    while (dest[i] != '\0'){
+        dest[i] = '\0';
+        i++;
+    }
+    for(i = 0; i < size -1; i++){
+        dest[i] = src[i];
+    }
+    return src_size;
 }
