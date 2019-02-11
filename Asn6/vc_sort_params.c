@@ -6,19 +6,18 @@
 
 #include <stdio.h>
 
-
-void test1(char **arr,int size){
+void print_pointers(char **arr,int size){
     int i;
     for (i = 1; i < size; i++){
         arr++;
-        printf("%p\n",arr);
+        printf("%p\n", *arr);
     }
 }
 
 void vc_print_params(char **str, int param_n){
     int i;
     for (i = 1; i < param_n; i++){
-        printf("%s\n",str[i]);
+        printf("%s\n", str[i]);
     }
 }
 
@@ -54,8 +53,6 @@ void vc_swap(char **s1, char **s2) {
     *s2 = temp;
 }
 
-
-
 /*
  * Funcion: Sort String array, so it is actually sorting pointers.
  * The parameter is An array of Pointers for Strings char ** arr.
@@ -69,7 +66,6 @@ void vc_sort_string_array(char **arr, int size) {
                     vc_swap(&arr[i],&arr[j]);
             }
         }
-    
     }
 }
 

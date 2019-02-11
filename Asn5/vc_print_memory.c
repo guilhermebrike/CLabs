@@ -7,5 +7,8 @@
 #include <stdio.h>
 
  void *vc_print_memory(void *addr, unsigned int size){
-        
+     /**
+      *  Todo in Next Assignment.
+      *  The Clue is to cast the void into *char. 
+      */
  }
