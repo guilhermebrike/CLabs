@@ -1,9 +1,8 @@
 /**
- * File              : char ** vc_split_whitespaces(char *str).c
+ * File              : void vc_print_words(char **words).c
  * Author            : Enrique, Masa and Guilherme
  * Date              : Feb 11 2019
  */
-
 
 #include <stdio.h>
 #include <stdlib.h>

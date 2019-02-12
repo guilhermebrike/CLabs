@@ -1,22 +1,50 @@
 /**
- * File              : char ** vc_split_whitespaces(char *str).c
+ * File              : void vc_split(char *str, char *charset).c
  * Author            : Enrique, Masa and Guilherme
  * Date              : Feb 11 2019
  */
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #define TRUE 1
 #define FALSE 0
 
-int count_strings(char *str){
+
+void vc_putstr(char *str) {
+
+    int i = 0;
+    while (str[i] != '\0') {
+        putchar(str[i]);
+        i++;
+    }
+}
+void vc_print_words(char **words){
+    
+    int i = 0;
+    while(words[i] != '\0'){
+        vc_putstr(words[i]);
+        putchar('\n');
+        i++;
+    }
+}
+
+int exists(char str,char *charset){
+    int i = 0;
+    while(charset[i] != '\0'){
+        if (str == charset[i]){
+            return TRUE;
+        }
+        i++;
+    }
+    return FALSE;
+}
+
+int count_strings(char *str,char *charset){
     int count_strings = 0;
     int i =0;
     int boolean_space = TRUE;
 
     while(str[i] != '\0'){
-        if (str[i] >= 0 && str[i] <=32){
+        if (exists(str[i],charset) == TRUE){
             if(boolean_space == TRUE){
                 count_strings++;
                 boolean_space = FALSE;
@@ -29,11 +57,11 @@ int count_strings(char *str){
     return ++count_strings;
 }
 
-int count_characters(char *src,int start){
+int count_characters(char *src,int start,char *charset){
     int count =0;
     int i = start;
     while (src[i] != '\0'){
-        if (src[i] >= 33 && src[i] <= 126){
+        if (exists(src[i],charset) == FALSE){
            count++;
         }else{
             break;
@@ -48,8 +76,9 @@ int count_characters(char *src,int start){
  * The Function returns an Array of Strings that were seppared by spaces and non printable characters.
  * The last String is null, in a way to tell when is the end of the array.
  */
-char **vc_split_whitespaces(char *src){
-    int dest_size = count_strings(src);
+
+char **vc_split(char *src, char *charset){
+    int dest_size = count_strings(src,charset);
     char **dest = (char **) malloc((dest_size + 1) * sizeof(char *));
     int dest_position = 0;
     int string_position = 0;
@@ -58,11 +87,11 @@ char **vc_split_whitespaces(char *src){
 
     while (src[start_src] != '\0'){
 
-        if (src[start_src] >= 0 && src[start_src] <=32){
+        if (exists(src[start_src],charset) == TRUE){
             start_src++;
             continue;
         }
-        string_size = count_characters(src,start_src);
+        string_size = count_characters(src,start_src,charset);
 
         dest[dest_position] = (char *) malloc(string_size * sizeof(char));
 
@@ -75,8 +104,17 @@ char **vc_split_whitespaces(char *src){
         dest_position++;
         start_src = start_src + string_size;
     }
-    
+
     dest[dest_size] = '\0';
     
     return dest;
+}
+
+int main() {
+
+    char src[] = "HELLOTHEWORLD";
+    char charset[] = "W";
+    char ** src2 = vc_split(src,charset);
+    vc_print_words(src2);
+    return 0;
 }
